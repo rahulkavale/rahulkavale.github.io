@@ -9,4 +9,5 @@ github_username: rahulkavale
 permalink: /blog/:year/:month/:day/:title
 # Build settings
 markdown: kramdown
-comments: true
+comments: True
+highlighter: pygments
