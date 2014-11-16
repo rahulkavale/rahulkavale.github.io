@@ -2,7 +2,7 @@
 title: Y-फळ Combinator
 description: Life, programming, and other such frivolity
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://yourdomain.com" # the base hostname & protocol for your site
+url: "http://rahulkavale.github.io" # the base hostname & protocol for your site
 twitter_username: RBKavale
 github_username: rahulkavale 
 permalink: /blog/:year/:month/:day/:title
