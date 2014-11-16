@@ -171,6 +171,24 @@ structure of the data, understand the variance in data, etc
 
 	Spark also allows to persist RDD in memory and share it between different operations, giving a huge performance boost. In case of data not fitting in memory, the spill is taken in disk, and this is totally transparent to the programmer. In this case the performance is comparable to tradional processing.
 
+To summarize,
+<br>
+
+<table border="line">
+<tr> <td>Criteria</td><td>Map Reduce</td><td>Spark</td></tr>
+
+<tr><td>Conciseness</td><td>Plain MR has a lot of boiler plate</td><td>Almost no boilerplate</td></tr>
+<tr><td>Performance</td><td>High latency</td><td>very fast compared to MR</td></tr>
+<tr><td>Testability</td><td>Possible via libraries, but non trivial</td><td>Very much easy</td></tr>
+<tr><td>Iterative processing</td><td>Non trivial</td><td>straight forward</td></tr>
+<tr><td>Exploration of data</td><td>Not possible easily</td><td>Spark shell allows quick and easy data exploration</td></tr>
+<tr><td>SQL like interface</td><td>Via Hive</td><td>Build in as SparkSQL</td></tr>
+<tr><td>Fault Tolerance</td><td>Inheranlty able to handle fault tolerance via persisting the results of each of phases</td><td>Exploits immutability of RDD to enable fault tolerance</td></tr>
+<tr><td>Eco system</td><td>lots of tools available but integration is not quite seamless, requiring lot of effort for their seamless integration </td><td>Unifies lot of interfaces like SQL, stream processing etc into single abstraction of RDD</td></tr>
+<tr><td>In memory computations</td><td>not possible</td><td>possible</td></tr>
+</table>
+
+<br>
 These are some questions I wanted to cover for Apache Spark. Since I did not want the post to become overwhelming, I will be covering aspects like how fault tolerance is handled in Spark, what happens to job scheduling, a lifecycle of a job in Spark model, debugging a Spark job, how does shuffle work in Spark etc in next article. Thanks for your patience. Any questions/feedback is welcome!
 
 [Github]:   https://github.com/rahulkavale
