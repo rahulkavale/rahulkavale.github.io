@@ -103,7 +103,7 @@ e.g. map, flatMap, reduceByKey, groupByKey, join, etc.
 Second one is, an action, these are terminal operations, and triggers actual calculation on the DAG which contains all the operations that are to be applied. 
 e.g. count, collect, max etc.
 
-* **What it means for a normal programmer?,** 
+* **What it means for a normal programmer?** 
 		
 	*	The code is just ***readable*** enough, to reason about it.
 
