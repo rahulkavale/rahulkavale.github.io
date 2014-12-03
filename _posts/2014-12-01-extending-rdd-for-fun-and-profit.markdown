@@ -6,7 +6,7 @@ categories: bigdata spark rdd
 
 ---
 
-In the previous [post](rahulkavale.github.io/blog/2014/11/16/scrap-your-map-reduce/),
+In the previous [post](http://rahulkavale.github.io/blog/2014/11/16/scrap-your-map-reduce/),
 I compared Spark with MapReduce programming model.
 In this post I will look in detail the RDD interface in Apache Spark and how to extend it to suit our needs by looking at existing RDD implementations.
 You will need to extend RDD for mostly two reasons, you want to handle custom input format i.e. a currently unsupported underlying storage,
