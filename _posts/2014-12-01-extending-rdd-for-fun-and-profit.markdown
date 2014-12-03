@@ -6,11 +6,14 @@ categories: bigdata spark rdd
 
 ---
 
-You will need to extend RDD for mostly two reasons, you want to handle custom input format i.e. different underlying storage,
-or you want to introduce an operation on RDD. For the second case,
+In the previous [post](rahulkavale.github.io/blog/2014/11/16/scrap-your-map-reduce/),
+I compared Spark with MapReduce programming model.
+In this post I will look in detail the RDD interface in Apache Spark and how to extend it to suit our needs by looking at existing RDD implementations.
+You will need to extend RDD for mostly two reasons, you want to handle custom input format i.e. a currently unsupported underlying storage,
+or you want to introduce an operation(either transformation or action) on RDD. For the second case,
 you can build the operation on top of existing combinators like map, flatMap, filter etc.
 For example, if I wanted the typical word counting logic available as a function on RDD,
-or count all the elements which fulfil a specific criteria, we can do it as,
+or count all the elements which fulfil a specific criteria, it can be done as follows,
 
 {% highlight scala %}
 object RDDImplicits {
@@ -54,15 +57,15 @@ def compute(split: Partition, context: TaskContext): Iterator[T]
 def getPartitions: Array[Partition]
 {% endhighlight %}
 
-There are other methods also like ```getDependencies, getPreferredLocations``` but we won't go into those in this post.
+There are other methods also like ```getDependencies, getPreferredLocations``` but I won't go into those in this post.
 
-Every RDD has set of partitions with it. The computation is applied on each partition in parallel.
-You can implement custom partition for your custom RDD to suit your needs.
-Partition represents the underlying splice/split of data.
+Every RDD comprises of set of partitions. The computation is applied on each partition in parallel.
+You can also define partitioning logic for your custom RDD depending upon your need.
+Partition represents the underlying slice/split of data.
 The compute method of RDD returns an iterator from the partition it has been provided.
-This is the place where we will apply the transformation on the iterator of the partition.
+This is the place where the transformation can be applied on the iterator of the partition.
 Since RDD operations are chained, they create a DAG of transformations, and a new RDD has dependency on its parent.
-This dependency can be of two types, NarrowDependecy, ie One-to-One dependency or wide dependency(occurs due to a shuffle).
+This dependency can be of two types: NarrowDependecy i.e. One-to-One dependency, wide dependency(occurs due to a shuffle).
 
 Lets look at one of the Simplest RDD, MappedRDD.
 Since the ```map``` operation does not need to shuffle the data, the MappedRDD has a one-to-one dependency on its parent.
@@ -83,14 +86,13 @@ override def compute(split: Partition, context: TaskContext) =
 
 
 Same is the case for FlatMappedRDD, FilteredRDD.
-For FlatMappedRDD, we will flatMap on the iterator the given transformation,
-and for the FilteredRDD we will apply filter on the iterator for computing the partition.
+For FlatMappedRDD, flatMap is applied the given transformation on the iterator,
+and for the FilteredRDD filter is applied on the iterator.
 
-One more need for extending RDD is to support some different underlying storage format.
-A very good example is existing HadoopRDD.
-The HadoopRDD make use of the InputFormat class to read the records using RecordReader.
+Existing HadoopRDD is a very good example for extending RDD to support some underlying storage format.
+The HadoopRDD makes use of the InputFormat class to read the records using RecordReader.
 The [compute method](https://github.com/apache/spark/blob/master/core/src/main/scala/org/apache/spark/rdd/HadoopRDD.scala#L209)
-just gives an iterator, where next element is asked from the underlying recordReader.
+just returns an iterator, where next element is fetched from the underlying recordReader.
 
 One more similar example is parallelizing a collection.
 The ```parallelize``` method on the SparkContext object creates a RDD with the collection split into slices/partitions and they collectively represent the RDD allowing us applying parallel operations on it.
@@ -106,6 +108,8 @@ is quite elaborated since it also takes into account all the edge case that migh
 but the idea remains the same.
 
 Hope this helps! Any feedback/comments are welcome.
+
+P.S. added some background for the post in the beginning
 
 <div class="social-share">
     <div class="tweet-button">
