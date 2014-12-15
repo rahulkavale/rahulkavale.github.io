@@ -191,5 +191,28 @@ To summarize,
 <br>
 These are some questions I wanted to cover for Apache Spark. Since I did not want the post to become overwhelming, I will be covering aspects like how fault tolerance is handled in Spark, what happens to job scheduling, a lifecycle of a job in Spark model, debugging a Spark job, how does shuffle work in Spark etc in next article. Thanks for your patience. Any questions/feedback is welcome!
 
+<div class="social-share">
+    <div class="tweet-button">
+        <a class="tweet-button" href="https://twitter.com/share" class="twitter-share-button" data-via="yphalcombinator">Tweet</a>
+
+        <!-- Put this just before the closing body tag -->
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    </div>
+
+    <div class="gplus-button">
+        <!-- Google + -->
+        <p class="gplus-button"><g:plusone size="medium"></g:plusone></p>
+
+        <!-- Add this just before the closing body tag of your web page -->
+        <script type="text/javascript">
+          (function() {
+            var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+            po.src = 'https://apis.google.com/js/plusone.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+          })();
+        </script>
+    </div>
+</div>
+
 [Github]:   https://github.com/rahulkavale
 [Twitter]: https://twitter.com/RBKavale
