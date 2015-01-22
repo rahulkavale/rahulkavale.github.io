@@ -19,15 +19,16 @@ or count all the elements which fulfil a specific criteria, it can be done as fo
 object RDDImplicits {
  implicit class RichRDD[T: ClassTag](rdd: RDD[T]) {
 
-   def countEachElement = {
-     rdd
-     .map(element => (element, 1))
-     .reduceByKey((value1, value2) => value1 + value2)
-   }
+       def countEachElement = {
+         rdd
+         .map(element => (element, 1))
+         .reduceByKey((value1, value2) => value1 + value2)
+       }
 
-   def countWhere(f: T => Boolean): Long = {
-    rdd.filter(f).count()
-   }
+       def countWhere(f: T => Boolean): Long = {
+        rdd.filter(f).count()
+       }
+    }
 }
 {% endhighlight %}
 
