@@ -2,8 +2,8 @@
 layout: post
 title: "Resilient Systems: Managing Retries and Traffic Patterns"
 date: 2024-07-02
-categories: [engineering, distributed-systems]
-tags: [resilience, performance, reliability, python]
+categories: [distributed-systems, system-design]
+tags: [system-design, latency, resilience, performance, reliability, python]
 ---
 
 # Resilient Systems: Managing Retries and Traffic Patterns
@@ -28,7 +28,7 @@ def retry_with_jitter(operation, max_attempts=3, base_delay=1):
             attempts += 1
             if attempts == max_attempts:
                 raise e
-            
+
             # Exponential backoff with jitter
             delay = base_delay * (2 ** attempts)
             jitter = random.uniform(0, delay / 2)

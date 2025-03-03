@@ -2,8 +2,8 @@
 layout: post
 title: "Good coding practices enabling SOC2 Compliance"
 date: 2024-10-01
-categories: [security, startups, compliance, best-practices]
-tags: [soc2]
+categories: [security, compliance, best-practices, startups]
+tags: [best-practices, startups, soc2]
 ---
 
 # Good Coding Practices enabling SOC2 Compliance

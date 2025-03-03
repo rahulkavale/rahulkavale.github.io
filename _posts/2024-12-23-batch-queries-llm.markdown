@@ -3,7 +3,7 @@ layout: post
 title: "Implementing Batched Queries with LLMs: Handling Large Datasets Efficiently"
 date: 2024-12-23
 categories: [ai, llm, data-processing]
-tags: [llm, batching, large-datasets, python]
+tags: [ai, llm, batching, large-datasets, python]
 ---
 
 Large Language Models (LLMs) have become essential tools for various data processing tasks, including data labeling, classification, and enrichment. However, when working with substantial datasets, context windows size starts getting in the way/

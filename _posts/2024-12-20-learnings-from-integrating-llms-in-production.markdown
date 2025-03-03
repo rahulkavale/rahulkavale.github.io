@@ -3,7 +3,7 @@ layout: post
 title: "Lessons from the Trenches: What I Learned Integrating LLMs in Production"
 date: 2024-12-20
 categories: [ai, llm, machine-learning, production]
-tags: [llm, production, engineering, lessons-learned]
+tags: [llm, production, engineering, learnings]
 description: "Practical insights from integrating Large Language Models into production systems, including handling non-JSON outputs, evaluation loops, model switching, and more."
 ---
 

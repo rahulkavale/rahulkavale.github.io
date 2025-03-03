@@ -3,6 +3,7 @@ layout: post
 title: "The Power of Two Choices in Systems"
 date: 2024-04-21
 categories: [system-design, algorithms, distributed-systems]
+tags: [system-design, distributed-systems]
 ---
 
 # The Power of Two Choices in Systems
@@ -36,6 +37,6 @@ With purely random assignment, the most loaded bin typically has O(log n / log l
 
 However, even with two choices, you still need some way to measure "load" to make the comparison meaningful.
 
-References - 
+References -
 1. https://www.eecs.harvard.edu/~michaelm/postscripts/mythesis.pdf
 2. https://medium.com/the-intuition-project/load-balancing-the-intuition-behind-the-power-of-two-random-choices-6de2e139ac2f

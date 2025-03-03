@@ -2,13 +2,13 @@
 layout: post
 title: "Tests Over Types: Why Testing Trumps Type Hints in Python"
 date: 2024-09-19
-categories: [python, development]
-tags: [testing, type-hints, software-engineering]
+categories: [best-practices, python]
+tags: [testing, python, software-engineering, best-practices]
 ---
 
 # Tests Over Types: Why Testing Trumps Type Hints in Python
 
-In the Python world, static type hints have gained significant popularity since their introduction in PEP 484[^1]. 
+In the Python world, static type hints have gained significant popularity since their introduction in PEP 484[^1].
 
 Even with all the benefits that type hints give, I strongly feel there are some aspects that need to be considered when using those.
 
@@ -88,7 +88,7 @@ A pragmatic approach might include:
 
 ## Conclusion
 
-Type hints can be valuable, but they aren't a substitute for good tests. 
+Type hints can be valuable, but they aren't a substitute for good tests.
 
 Adding tests is much better investment as compared to debating whether to add type hints or not.
 

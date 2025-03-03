@@ -3,11 +3,12 @@ layout: post
 title: "Amdahl's Law & Little's Law: Foundational Principles for System Design"
 date: 2023-10-04
 categories: [system-design, scalability, performance]
+tags: [system-design, scalability]
 ---
 
 When designing scalable systems, it's a very important factor to implement stateless services to leverage horizontal scaling.
 However, based on the nature of the problem, adding multiple workers does not always mean full parallelism.
-To predictably model this behaviour to identify the constraints, there are two simple laws that come very handy -  Amdahl's Law and Little's Law. 
+To predictably model this behaviour to identify the constraints, there are two simple laws that come very handy -  Amdahl's Law and Little's Law.
 While they address different aspects of system behavior, together they provide critical insights for designing high-performance systems.
 
 ## Amdahl's Law: The Limits of Parallelization[1]

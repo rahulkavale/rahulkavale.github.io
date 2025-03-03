@@ -2,7 +2,8 @@
 layout: post
 title: "Redis Pipelining: The Powerful Feature You're Probably Not Using"
 date: 2023-12-19
-categories: [redis, performance, databases]
+categories: [redis, performance]
+tags: [redis, performance]
 ---
 
 # Redis Pipelining: The Powerful Feature You're Probably Not Using

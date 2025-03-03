@@ -3,6 +3,7 @@ layout: post
 title: "Do You Really Need Kubernetes? The Case for Simpler Infrastructure in Early-Stage Products"
 date: 2023-12-15
 categories: [infrastructure, startups, technology, kubernetes]
+tags: [startups, infrastructure, system-design]
 ---
 
 # Do You Really Need Kubernetes? The Case for Simpler Infrastructure in Early-Stage Products
@@ -16,7 +17,7 @@ Nowadays, I see lot of companies are using Kubernetes (K8s) as the default choic
 
 ## Kubernetes offerings
 
-Kubernetes offers an impressive set of capabilities like - 
+Kubernetes offers an impressive set of capabilities like -
 
 - Container orchestration across multiple nodes
 - Automated deployments and rollbacks
@@ -37,10 +38,10 @@ Kubernetes introduces a steep learning curve. Your team needs to understand pods
 Running a production Kubernetes cluster is a task in itself. Most cloud providers provide a hosted K8s as service but it also comes with a good cost aspect.
 Irrespective of hosted or self managed, it introduces additional layer for debugging applications in a production environment.
 
-### 3. Infrastructure Costs 
+### 3. Infrastructure Costs
 
 K8S was designed to be able to handle google scale infrastructure providing a consistent production environment to services in a containerized way.
-Most of the startups - especially in the initial phase have constraints on the cost. Running K8S cluster can be a costly affair. 
+Most of the startups - especially in the initial phase have constraints on the cost. Running K8S cluster can be a costly affair.
 
 ## The Case for Starting Simple
 

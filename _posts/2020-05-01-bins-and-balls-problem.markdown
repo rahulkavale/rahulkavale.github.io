@@ -3,6 +3,7 @@ layout: post
 title: "The Bins and Balls Problem: A Computer Science Fundamental"
 date: 2020-05-01
 categories: [computer-science, algorithms, fundamentals]
+tags: [algorithms]
 ---
 
 # The Bins and Balls Problem: A Computer Science Fundamental

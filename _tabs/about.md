@@ -7,7 +7,7 @@ order: 4
 ## Rahul Kavale
 **Lead Software Engineer | Distributed Systems | LLM & AI Engineering**
 
-With over 12 years of experience in Software engineering, I specialize in building high-performance, distributed systems that scale seamlessly. Currently serving as a Lead Software Engineer at Corrily (YC21), I architect and implement solutions that process hundreds of requests per second with optimized latency and fault tolerance.
+With over 12 years of experience in Software engineering, I specialize in building high-performance, distributed systems that scale seamlessly. I architect and implement solutions that process hundreds of requests per second with optimized latency and fault tolerance.
 
 ### What I Do
 

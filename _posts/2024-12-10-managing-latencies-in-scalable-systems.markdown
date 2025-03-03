@@ -2,8 +2,8 @@
 layout: post
 title: "Taming Latency: Strategies to Handle Latencies in Scalable Systems"
 date: 2024-12-10
-categories: [engineering, distributed-systems]
-tags: [performance, latency, scalability]
+categories: [system-design, distributed-systems]
+tags: [system-design, distributed-systems, performance, latency, scalability]
 ---
 
 # Taming Latency: Strategies to Handle Latencies in Scalable Systems
@@ -64,7 +64,7 @@ Netflix's recommendation system, for instance, doesn't calculate your personaliz
 
 Read and write operations have fundamentally different characteristics and hence different SLA requirements. Depending on the problem and the domain, sometimes reads needs to be very fast but writes can afford to be relatively slower. This kind of takes us back to PACELC theorem[^1] where we need to balance latency vs consistency.
 
-* Identify and separate read and write patterns 
+* Identify and separate read and write patterns
 * Use specialized data stores optimized for either reads or writes
 * Consider eventual consistency models where appropriate
 * Scale read replicas independently from write masters

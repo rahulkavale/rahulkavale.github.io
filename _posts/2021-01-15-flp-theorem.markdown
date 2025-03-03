@@ -3,6 +3,7 @@ layout: post
 title: "The FLP Theorem: Understanding the Impossibility of Consensus in Distributed Systems"
 date: 2021-01-15
 categories: [distributed-systems, computer-science, theory]
+tags: [distributed-systems, system-design]
 ---
 
 # The FLP Theorem: Understanding the Impossibility of Consensus in Distributed Systems

@@ -3,13 +3,14 @@ layout: post
 title: "Beyond Booleans: Why Enums Should Be Your Go-To for State Management"
 date: 2022-06-15
 categories: [programming, best-practices, software-design]
+tags: [best-practices, database]
 ---
 
 # Beyond Booleans: Why Enums Should Be Your Go-To for State Management
 
-Representing state can significantly impact code clarity, maintainability, and extensibility. 
+Representing state can significantly impact code clarity, maintainability, and extensibility.
 Lot of times certain attributes end up being modelled as booleans which solve the requirement temporarily but can turn out to be suboptimal and does not extend easily.
-Let's explore how using enums instead of boolean flags for state management can address this issue. 
+Let's explore how using enums instead of boolean flags for state management can address this issue.
 Consider a simple user entity. Imagine we want to expose a field to indicate if the user is deleted or not. By default this seems straightforward with a boolean field `is_deleted` in the user.
 
 ## The Typical Boolean Approach
@@ -44,7 +45,7 @@ from enum import Enum
 class UserAccountState(Enum):
     PENDING_ACTIVATION = "pending_activation"
     ACTIVE = "active"
-    DEACTIVATED = "deactivated"  
+    DEACTIVATED = "deactivated"
     LOCKED = "locked"
     DELETED = "deleted"
 
@@ -53,7 +54,7 @@ class User:
         self.username = username
         self.email = email
         self.account_state = UserAccountState.PENDING_ACTIVATION
-        
+
         # Boolean for subscription - this makes sense as boolean
         self.is_premium = False
 ```

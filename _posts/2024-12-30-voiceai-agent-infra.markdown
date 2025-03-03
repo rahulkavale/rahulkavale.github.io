@@ -3,7 +3,7 @@ layout: post
 title: "Modeling Voice AI Agents For Scale: A Kubernetes Approach"
 date: 2024-12-30
 categories: [ai, voice-ai, kubernetes]
-tags: [infrastructure, kubernetes, scalability, microservices, voice-agents]
+tags: [infrastructure, kubernetes, scalability, system-design, microservices, voice-agents]
 ---
 
 # Modeling Voice Pipelines as Scalable Agents: A Kubernetes Approach

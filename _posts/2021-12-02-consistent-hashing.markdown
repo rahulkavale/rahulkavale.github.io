@@ -3,6 +3,7 @@ layout: post
 title: "Consistent Hashing: Balancing Distribution in Dynamic Systems"
 date: 2021-12-02
 categories: [distributed-systems, algorithms, system-design]
+tags: [distributed-systems, algorithms, system-design]
 ---
 
 # Consistent Hashing: Balancing Distribution in Dynamic Systems

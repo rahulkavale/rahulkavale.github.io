@@ -3,6 +3,7 @@ layout: post
 title: "Cuckoo Hashing: Elegant Collision Resolution"
 date: 2023-04-05
 categories: [algorithms, data-structures, hashing]
+tags: [algorithms]
 ---
 
 # Cuckoo Hashing: Elegant Collision Resolution

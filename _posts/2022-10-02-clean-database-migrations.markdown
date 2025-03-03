@@ -3,6 +3,7 @@ layout: post
 title: "Clean Database Migrations"
 date: 2022-10-02
 categories: [database, best-practices, software-engineering]
+tags: [best-practices, database]
 ---
 
 # Clean Database Migrations
@@ -46,7 +47,7 @@ This is very risky as reverting this is a complex operation. If this is really n
 ### Deleting column
 Once the column is not refereed in code anymore, the column could be deleted safely. Instead of hard deleting the column, evaluate if it will make sense to soft delete it eg rename it with a prefix `_deleted`
 
-This is important in case you are using an ORM like SQLAlchemy which has schemas as classes. 
+This is important in case you are using an ORM like SQLAlchemy which has schemas as classes.
 
 If the column is deleted, then it can cause an issue with older migrations - when someone new joins a team, then they may face issues because the column does not exist.
 
@@ -85,10 +86,10 @@ This phased approach minimizes risk and ensures smooth transitions, even for com
 
 ## Additional best practises
 
-1. **Make Migrations Idempotent**  
+1. **Make Migrations Idempotent**
    Migrations should be safe to run multiple times without causing errors or data corruption. Use conditionals like IF NOT EXISTS or check for the presence of objects before creating them.
 
-2. **Test Migrations Thoroughly**  
+2. **Test Migrations Thoroughly**
    Always test migrations on a copy of production data to verify:
    * Execution time (will it cause significant downtime?)
    * Space requirements (will you run out of disk space?)

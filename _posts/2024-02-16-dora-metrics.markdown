@@ -2,8 +2,8 @@
 layout: post
 title: "DORA Metrics: Simple Definitions and What They Measure"
 date: 2024-02-16
-categories: [infrastructure, metrics, engineering]
-tags: [devops]
+categories: [infrastructure, metrics, best-practices]
+tags: [startups, devops, best-practices]
 ---
 
 # DORA Metrics: Simple Definitions and What They Measure

@@ -2,7 +2,8 @@
 layout: post
 title: "Redis Locks and Fencing Tokens"
 date: 2024-01-20
-categories: [redis, distributed-systems, concurrency]
+categories: [distributed-systems, concurrency, redis]
+tags: [redis, performance, system-design, distributed-systems]
 ---
 
 # Redis Locks and Fencing Tokens
