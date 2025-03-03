@@ -20,7 +20,7 @@ description: Life, programming, and other such frivolity
 
 # Fill in the protocol & hostname for your site.
 # E.g. 'https://username.github.io', note that it does not end with a '/'.
-url: "http://rahulkavale.github.io" # the base hostname & protocol for your site
+url: "https://rahulkavale.github.io"
 
 github:
   username: rahulkavale # change to your GitHub username
