@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Implementing Batched Queries with LLMs: Handling Large Datasets Efficiently"
-date: 2025-12-23
+date: 2024-12-23
 categories: [llm, data-processing]
 tags: [llm, batching, large-datasets, python]
 ---
