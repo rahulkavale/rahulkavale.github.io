@@ -2,7 +2,7 @@
 layout: post
 title: "Balancing Act: Using Structured Output with Streaming in LLMs"
 date: 2024-12-26
-categories: [llm, ai]
+categories: [ai, llm]
 tags: [llm, structured output, streaming, latency]
 ---
 

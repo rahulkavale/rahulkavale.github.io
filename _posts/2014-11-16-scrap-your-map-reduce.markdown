@@ -2,7 +2,8 @@
 layout: post
 title:  Scrap your MapReduce! (Or, Introduction to Apache Spark)
 date:   2014-11-16 09:34:33
-categories: bigdata spark map-reduce
+categories: [spark, map-reduce]
+tags: [bigdata]
 
 ---
 

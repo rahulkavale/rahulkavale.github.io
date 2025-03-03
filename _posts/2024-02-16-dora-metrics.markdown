@@ -2,12 +2,13 @@
 layout: post
 title: "DORA Metrics: Simple Definitions and What They Measure"
 date: 2024-02-16
-categories: [devops, metrics, engineering]
+categories: [infrastructure, metrics, engineering]
+tags: [devops]
 ---
 
 # DORA Metrics: Simple Definitions and What They Measure
 
-Introduced by Google, DORA metrics are four key measures for CI/CD maturity of a system and/or team. 
+Introduced by Google, DORA metrics are four key measures for CI/CD maturity of a system and/or team.
 
 ## 1. Deployment Frequency
 

@@ -2,8 +2,8 @@
 layout: post
 title:  Extending RDD for fun and profit
 date:   2014-12-01 09:34:33
-categories: bigdata spark rdd
-
+categories: [spark, rdd]
+tags: [bigdata]
 ---
 
 In the previous [post](https://rahulkavale.github.io/blog/2014/11/16/scrap-your-map-reduce/),
