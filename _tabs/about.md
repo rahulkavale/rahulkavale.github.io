@@ -24,7 +24,7 @@ My toolkit includes Python, Java, Go, TypeScript, and expertise in database tech
 
 ### Recent Projects
 
-- **PriceGPT**: An LLM-powered recommendation engine that achieved a Top 10 ranking on Product Hunt
+- **PriceGPT**: An LLM-powered recommendation engine that featured on Product Hunt
 - **Unsurvey**: A distributed, real-time voice-call system supporting 100K+ concurrent sessions
 - **Corrily Pricing Engine**: A high-throughput pricing computation platform with 100ms P95 latency
 
