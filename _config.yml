@@ -36,7 +36,7 @@ social:
     - https://github.com/rahulkavale
      - https://www.linkedin.com/in/rahul-kavale
 
-theme_mode: audo
+theme_mode: #
 
 # The CDN endpoint for media resources.
 # Notice that once it is assigned, the CDN url
