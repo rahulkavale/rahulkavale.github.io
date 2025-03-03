@@ -13,38 +13,38 @@ Apache Spark is a ***cluster computing engine***. It abstracts away the underlyi
 
 * **What does it replace in existing ecosystem?**
 
-	 Actually Spark does not replace anything in traditional Hadoop ecosystem. Since Hadoop 2, its just yet another application that runs inside a <a href="http://stackoverflow.com/questions/14365218/what-is-a-container-in-yarn">YARN container</a>. Hence it fits very well inside the Hadoop eco-system. It offers us a consise, testable, readble, maintanable way to program, freeing us from writing painful MapReduce jobs also offering significant amount of [performance gain](http://databricks.com/blog/2014/10/10/spark-petabyte-sort.html). We will look in details each of these points.
-	 
+	 Actually Spark does not replace anything in traditional Hadoop ecosystem. Since Hadoop 2, its just yet another application that runs inside a <a href="https://stackoverflow.com/questions/14365218/what-is-a-container-in-yarn">YARN container</a>. Hence it fits very well inside the Hadoop eco-system. It offers us a consise, testable, readble, maintanable way to program, freeing us from writing painful MapReduce jobs also offering significant amount of [performance gain](https://databricks.com/blog/2014/10/10/spark-petabyte-sort.html). We will look in details each of these points.
+
 * **Some properties of "Big Data"**
-	
+
 	Big data is inherently immutable, meaning it is not supposed to updated once generated.
-	
+
 	The data itself is mostly structured or semi structured.
-	
+
     Since the enormous size of data, commodity hardware makes more sense for its storage/computation, and hence its always distributed and powered by not so high end hardware, making the data distributed across cluster of many such machines, and as we know the distributed nature makes the programming complicated.
-	
+
 
 *  **Immutability and MapReduce model**
-	
+
 	The Map reduce model lacks to exploit the immutable nature of the data. A non trivial MapReduce(MR) job contains set of MR phases and in the name of fault tolerance, the intermediate results are persisted to disk causing lot of IO, causing a serious performance hit.
-	
-	
+
+
 *  **Pain points with MapReduce model**
 
 	MR code requires a significant amount of boilerplate.
 
 	The programmer is required to think only in terms of basic operations of Map and reduce and mapping every problem to MR is not at trivial. Common operations like joining two data sets require significant amount of work.
-	
+
 	MR model is not suitable for iterative processing.
-	
+
 	The programmer is not at all transparent to the distributed nature of data, and often needs to think for optimizations like Map side reduce, Map side join etc.
 
 	Although there are tools for addressing some of above mentioned pain points in terms of programming MR job by providing some higher level of abstraction, like Cascading, Scalding, Hive(SQL interface to MR) they do not improve any performance aspect as they are bound by the underlying MR jobs.
-		
+
 	Hadoop was meant for ***batch*** kind of operations.
-	
-Lets look at programming model for Spark, and see how it aims to solve above mentioned problems. 
-	
+
+Lets look at programming model for Spark, and see how it aims to solve above mentioned problems.
+
 *  **How does Spark's programming model look like?**
 
 	 The main abstraction for computations in Spark is [Resilient Distributed Datasets(RDD)](https://www.cs.berkeley.edu/~matei/papers/2012/nsdi_spark.pdf). Due to its simplified programming interface, it unifies computational styles which were spread out in otherwise traditional Hadoop stack.
@@ -53,15 +53,15 @@ Lets look at programming model for Spark, and see how it aims to solve above men
 	The abstraction of RDD, due to its properties also is a reason for much more performant nature of Spark. Lets see how.
 
 * **What is RDD?**
-	
+
 	RDD stands for Resilient Distributed Dataset. It forms the basic abstraction on which Spark programming model works.
-	
+
 	RDD is ***immutable***.
 
     > This is a very important point, because even HDFS is write once, read many times/append only store, making it immutable but the MapReduce model makes it impossible to exploit this fact for improving performance.
 
     RDD is ***lazily evaluated***
-	
+
     > RDD is not materialized unless an action(terminal operation) is called on it. This means when a terminal operation is called, Spark is aware of DAG of transformation it has to do on the data, making it repeatable operation in case of failures, and hence the fault tolerance aspect becomes trivial. It also allows to have some optimizations possible on computations steps which were otherwise impossible to guess.
 
 	It can be thought of as ***Distributed collections***. The programming interface almost makes distributed nature of underlying data transparent.
@@ -70,7 +70,7 @@ Lets look at programming model for Spark, and see how it aims to solve above men
 
 
 * **What it means to operate on RDD vs traditional MapReduce?**
-	
+
 	RDD abstracts us away from traditional map-reduce style programs, giving us interface of a collection(which is distributed), and hence lot of operations which required quite a boilerplate in MR are now just collection operations, e.g. groupBy, joins, count, distinct, max, min etc.
 It also allows us to iterative processing quite easily, by sharing RDD between operations.
 
@@ -79,11 +79,11 @@ It also allows us to iterative processing quite easily, by sharing RDD between o
 * **How is computation model when compared to MapReduce?**
 
 	MR model is composed of following stages,
-    
+
   > Map -> optional combine(Map side reduce) -> shuffle and sort -> Reduce
-  
+
   It also allows us to have a custom partitioner to exploit partitioned nature of data.
-	
+
   Welcome to Spark model, the beautiful thing about Spark is, it does not restrict us to traditional just Map and reduce operations. It allows us to apply collection like operations on a RDD, giving us another RDD. Since its just a RDD, it can queried via SQL interface, applied machine learning algorithms, and lot of fancy stuff.
 Lets look at a word count example, done in Spark,
 
@@ -94,21 +94,21 @@ val wordsMappedToOne = words.map(word => (word, 1))
 val wordOccrCount = wordsMappedToOne.reduceByKey((a, b) => a + b)
 wordOccrCount.saveAsTextFile("path/to/output/file")
 {% endhighlight %}
-	
-More examples can be found [here](https://github.com/rahulkavale/spark-examples). 
-	
-I have used the Scala interface for Spark. The code looks quite self-explanatory. Notice `sparkContext` is the way you specify the Spark configuration, and connect to the cluster. The remaining code are just containing collection operations. One important point to note here is, since RDD is lazily evaluated, no code is getting executed on the cluster till the point we actually ask Spark, in this case to save the output to the destination path. 
+
+More examples can be found [here](https://github.com/rahulkavale/spark-examples).
+
+I have used the Scala interface for Spark. The code looks quite self-explanatory. Notice `sparkContext` is the way you specify the Spark configuration, and connect to the cluster. The remaining code are just containing collection operations. One important point to note here is, since RDD is lazily evaluated, no code is getting executed on the cluster till the point we actually ask Spark, in this case to save the output to the destination path.
 	There are two kind of operations allowed on RDD, First one is, set of transformations, these operations do not evaluate, but rather produce new RDD, with the transformation to be applied. Spark creates a DAG of these transformations.
 e.g. map, flatMap, reduceByKey, groupByKey, join, etc.
-Second one is, an action, these are terminal operations, and triggers actual calculation on the DAG which contains all the operations that are to be applied. 
+Second one is, an action, these are terminal operations, and triggers actual calculation on the DAG which contains all the operations that are to be applied.
 e.g. count, collect, max etc.
 
-* **What it means for a normal programmer?** 
-		
+* **What it means for a normal programmer?**
+
 	*	The code is just ***readable*** enough, to reason about it.
 
-	*	The code is ***testable***, as it is just normal scala code, and a Spark cluster can be spawn in local mode to run the tests. This is very important as tradidionally it was very difficult to test MR code. 
-	
+	*	The code is ***testable***, as it is just normal scala code, and a Spark cluster can be spawn in local mode to run the tests. This is very important as tradidionally it was very difficult to test MR code.
+
 	*   Spark also supports Python, Java apart form Scala.
 
 	*	The code can be made up of normal domain models, wherever required.
@@ -116,9 +116,9 @@ e.g. count, collect, max etc.
 	*	The Spark computation model also offers significant amount of ***performance***, reducing the latencies introduced as compared to traditional MR model.
 
 	*	Spark unifies different ways to process data. Using SparkSQL, one can query the data by SQL queries whenever required, also allowing to apply normal collection-like operations.
-		
+
 	*	Map side reduce, or a combiner is not required at all, since the reduce operations are by default having a local aggregation at each map side.
-	
+
 	*	The code is testable! Yes this is this so important that I am mentioning it twice.
 
 	*   Unifies various computation needs into a single place making the life easier and not needing to share data between different persistent stores just to do some sort of specialized processing.
@@ -135,16 +135,16 @@ e.g. count, collect, max etc.
 	 This comparison is actually not fair as Cascading, Scalding are libraries, where Spark is framework. These libraries actually introduce newer, richer abstractions over MR model. They don’t give any performance benefits.
 
 	 In case of Spark, being a full fledged computation engine, it does not use MR framework but has its own computation model based on RDDs. It gives performance benefits apart from the point we mentioned above.
-	 
-  It also allows ***optional in memory processing*** of RDD giving incredible speedup. Apart from that, as we discussed, its storage agnostic, meaning it can be used to compute from data sources like local files, S3 storage, HDFS, JDBC data sources, Cassandra, and others.	
+
+  It also allows ***optional in memory processing*** of RDD giving incredible speedup. Apart from that, as we discussed, its storage agnostic, meaning it can be used to compute from data sources like local files, S3 storage, HDFS, JDBC data sources, Cassandra, and others.
 
 *	**How is normal development workflow like?**
-	
+
 	* Spark-shell usually comes handy here.
 
 	* load the data from persistent store.
 
-    * Explore the data, using normal functions, also explore the sampled data to understand 
+    * Explore the data, using normal functions, also explore the sampled data to understand
 structure of the data, understand the variance in data, etc
 
     * Model the workflow in terms of set of operations in the RDDs made out of sample data.
@@ -161,7 +161,7 @@ structure of the data, understand the variance in data, etc
 
 *   **Isn’t Spark about in-memory computations?**
 
-	Often, I have seen people confusing Spark, as just in memory computation engine. Well, Spark is not at all just in-memory. It provides optional in-memory storage, mainly for performance boosts. To quote the official documentation, Almost all Spark operators perform external operations when data does not fit in memory. More generally, Spark’s operators are a strict superset of MapReduce. The user can very well specify the STORAGE_LEVELs which are memory-only, memory-and-disk, disk-only etc, which handle data spilling out of memory into disk. 
+	Often, I have seen people confusing Spark, as just in memory computation engine. Well, Spark is not at all just in-memory. It provides optional in-memory storage, mainly for performance boosts. To quote the official documentation, Almost all Spark operators perform external operations when data does not fit in memory. More generally, Spark’s operators are a strict superset of MapReduce. The user can very well specify the STORAGE_LEVELs which are memory-only, memory-and-disk, disk-only etc, which handle data spilling out of memory into disk.
 
 * **How is Spark more performant than Hadoop MR and family?**
 

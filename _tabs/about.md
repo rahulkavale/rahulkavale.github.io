@@ -40,4 +40,4 @@ I'm always interested in discussing distributed systems, performance optimizatio
 
 - LinkedIn: [linkedin.com/in/rahul-kavale](https://www.linkedin.com/in/rahul-kavale/)
 - GitHub: [github.com/rahulkavale](https://github.com/rahulkavale)
-- Website: [rahulkavale.github.io](http://rahulkavale.github.io)
+- Website: [rahulkavale.github.io](https://rahulkavale.github.io)
