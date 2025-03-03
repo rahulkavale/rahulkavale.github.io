@@ -10,9 +10,9 @@ categories: [redis, performance, databases]
 Redis is known for its incredible speed.
 I have seen lot of developers are not aware of another such awesome feature in redis - pipelining
 
-Most Redis users interact with the database in a simple request-response pattern: 
+Most Redis users interact with the database in a simple request-response pattern:
 send a command, wait for the response
-then send the next command. 
+then send the next command.
 While this works fine for casual use, it leaves significant performance on the table.
 
 Redis pipelining allows you to send multiple commands to the server without waiting for each response. Instead, all commands are sent in a batch, and responses are received together.
@@ -27,7 +27,7 @@ Despite being available since the early days of Redis, pipelining remains underu
 - The performance impact isn't obvious until you're handling larger workloads
 
 <br>
-<img src="/images/redis-separate-keys.png" alt="Redis Separate Keys" width="500" height="300">
+<img src="/assets/post_images/redis-separate-keys.png" alt="Redis Separate Keys" width="500" height="300">
 
 ## The Striking Performance Difference
 
@@ -37,7 +37,7 @@ The performance gain from pipelining isn't subtle—it's dramatic:
 - With pipelining, those same 100 commands can be executed in little more than a single round-trip time—potentially a 50x throughput improvement.
 
 <br>
-<img src="/images/redis-pipelined.png" alt="Redis Pipelining" width="500" height="300">
+<img src="/assets/post_images/redis-pipelined.png" alt="Redis Pipelining" width="500" height="300">
 
 ## How It Works Under the Hood
 
@@ -79,5 +79,5 @@ Consider pipelining whenever you're executing multiple Redis commands in sequenc
 
 Redis pipelining is a perfect example of a feature that offers substantial benefits with minimal implementation complexity. If you're working with Redis at any significant scale, take the time to explore how pipelining can be integrated into your application. The performance improvement might surprise you.
 
-References - 
+References -
 https://redis.io/docs/latest/develop/use/pipelining/

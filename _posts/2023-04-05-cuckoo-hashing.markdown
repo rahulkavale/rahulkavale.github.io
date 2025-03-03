@@ -22,7 +22,7 @@ The algorithm maintains multiple hash tables (typically two) with different hash
 
 This creates a displacement chain - each element has multiple potential locations, and insertions may trigger cascading relocations. To limit a cascading effect of evications, usually the evictions are limited to a max number, if the evictions breach this threshold, then the whole table is rehashed - however this is the worst case.
 <br>
-<img src="/images/cuckoo-hashing.png" alt="Cuckoo hashing" width="500" height="300">
+<img src="/assets/post_images/cuckoo-hashing.png" alt="Cuckoo hashing" width="500" height="300">
 
 ## Performance Characteristics
 
@@ -33,7 +33,7 @@ This creates a displacement chain - each element has multiple potential location
 
 The algorithm represents a practical balance between theoretical elegance and real-world performance needs, making it particularly suitable for systems where consistent performance guarantees matter more than raw average-case speed.
 
-## Reference 
+## Reference
 
 1. ByteDance Monolith paper [https://arxiv.org/pdf/2209.07663](https://arxiv.org/pdf/2209.07663)
 2. Cuckoo hashing - [https://cs.stanford.edu/~rishig/courses/ref/l13a.pdf](https://cs.stanford.edu/~rishig/courses/ref/l13a.pdf)

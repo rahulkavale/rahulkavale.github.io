@@ -21,7 +21,7 @@ Consistent hashing maps both data keys and nodes to the same circular keyspace (
 3. When nodes join or leave, only keys between the affected node and its predecessor need remapping
 
 <br>
-<img src="/images/consistent-hashing-ring.png" alt="Consisent hashing ring" width="500" height="300">
+<img src="/assets/post_images/consistent-hashing-ring.png" alt="Consisent hashing ring" width="500" height="300">
 
 This approach ensures that adding or removing a node impacts only a small fraction of keys, approximately 1/n of the total.
 
@@ -40,7 +40,7 @@ Basic consistent hashing can result in uneven distribution. Common solutions inc
 * Weighted distribution: Assigning high-capacity servers more virtual nodes
 
 <br>
-<img src="/images/consistent-hashing-ring-with-vnodes.png" alt="Consistent hashing with vnode" width="500" height="300">
+<img src="/assets/post_images/consistent-hashing-ring-with-vnodes.png" alt="Consistent hashing with vnode" width="500" height="300">
 
 ## Production Applications
 

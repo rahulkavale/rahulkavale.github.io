@@ -10,7 +10,7 @@ categories: [redis, distributed-systems, concurrency]
 Lot of times out of the box Redis locks are used for ensuring mutual exclusion between workers.
 However, the redis based locking mechanism actually needs some additional handling to avoid any unexpected behaviours.
 
-Locks with redis can be implemented with two ways[^1] 
+Locks with redis can be implemented with two ways[^1]
 - Single master - just use a single key acting as a lock with TTL. If the key already exists, the operation fails, indicating the lock is held by another client.
 - Multi master - Redis provides distributed lock with Redlock implementation
 
@@ -24,9 +24,9 @@ While this basic implementation seems sound, it has a critical vulnerability. Co
 4. Client A resumes and continues its work, unaware it no longer holds the lock
 5. Both Client A and Client B now operate on the protected resource simultaneously
 <br>
-<img src="/images/redis-lock-expiry.png" alt="Redis Lock" width="500" height="300">
+<img src="/assets/post_images/redis-lock-expiry.png" alt="Redis Lock" width="500" height="300">
 
-This scenario violates the fundamental purpose of a lock—ensuring exclusive access. 
+This scenario violates the fundamental purpose of a lock—ensuring exclusive access.
 
 Imagine this was seat booking system, Client A took long time for payment and came back meanwhile lock expired and B booked same seat - basically two people booked same seat - very bad.
 
@@ -40,7 +40,7 @@ Fencing tokens solve this problem by adding a monotonically increasing number to
 def acquire_lock_with_token(lock_name, timeout_seconds):
     # Get the next token value
     token = redis_client.incr(f"lock_token:{lock_name}")
-    
+
     # Try to acquire the lock with this token
     if redis_client.set(f"lock:{lock_name}", token, nx=True, ex=timeout_seconds):
         return token
@@ -69,7 +69,7 @@ Let's revisit our problematic scenario with fencing tokens in place:
 7. The resource manager sees token 1 < token 2 and rejects Client A's operation
 
 <br>
-<img src="/images/lock-with-fencing-token.png" alt="Redis Lock with fencing token" width="500" height="300">
+<img src="/assets/post_images/lock-with-fencing-token.png" alt="Redis Lock with fencing token" width="500" height="300">
 
 This mechanism ensures that even if a client experiences a long pause and continues operating after its lock has expired, it cannot corrupt data because its token is now considered stale.
 
